@@ -14,3 +14,5 @@ npm install mongoose express dotenv
 ## User Interface
 
 
+![Screenshot from 2024-03-17 06-00-53](https://github.com/thomas-777/code-init/assets/132759003/82ee9197-dfcc-4593-8c43-98824bec14e6)
+![Screenshot from 2024-03-17 06-01-14](https://github.com/thomas-777/code-init/assets/132759003/72212c61-70b7-4c07-a99e-912c84257fc6)
