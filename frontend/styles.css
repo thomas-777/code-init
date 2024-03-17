@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #7b6251;
+    background-image: url(1.jpg);
+    
+    background-position: center;
+    background-size: cover;
+    
+    margin: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f9e5;
+}
+
+.content {
+    display: flex;
+}
+
+.nav {
+    width: 60px;
+    height: 100vh;
+    background-color: #14080e;
+}
+.goback {
+
+    background-color:#412722;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    border-radius: 10px;
+    
+}
+
+img {
+    
+    height: 20px;
+    width: 20px;
+}
+.goback:hover{
+    background-color: #d5c2be;
+}
+
+.chats {
+    
+    backdrop-filter:blur(2px);
+    width: 1870px;
+    height: 100vh;
+    padding: 20px;
+    color: white;
+    overflow-y:scroll;
+}
+
+h5 {
+    background-color:#412722;
+    padding: 10px;
+    text-decoration: double;
+}
+
+.messages, .conversations{
+    width:300px;
+    display:flex;
+    flex-direction: column;
+    padding: 10px;
+
+}
+
+.message {
+    margin-bottom: 10px;
+}
+
+.sender {
+    font-weight: bold;
+}
+
+.text {
+    margin-left: 10px;
+}
+.name{
+    width: 100%-350px;
+    max-height:100px;
+    background-color: rgb(31, 22, 65);
+    color:white;
+    padding: 25px;
+    margin: auto;
+}
+.message-input{
+    align-content: flex-end;
+}
+.inbox{
+    background-color:#e8ceb0;
+    
+    height: 80px;
+    color: black;
+    border-radius: 5px;
+    text-align: center;
+    margin:15px;
+}
+.inbox:hover{
+    background-color: #fffcf8;
+}
+.sender{
+    color:#fffcf8;
+    background-color: #204445;
+    height: 25px;
+}
+.sender-message{
+    height:55px;
+    box-sizing: border-box;
+    overflow-y:auto;
+    scrollbar-width: 1px;
+    scroll-behavior: smooth;
+    scrollbar-color: black;
+}

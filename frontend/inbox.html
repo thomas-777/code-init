@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chats</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <div class="content">
+        <div class="nav">
+            <button type="button" onclick="gotolink()">
+            <div class="goback" >
+                
+                <img src="/home/thomas/Desktop/Morse Chat app/Daco_4370644.png" alt="back">
+            </div></button>
+            
+        </div>
+
+        <div class="chats" id="chatList">
+            
+            <h5>INBOX</h5>
+            <div id="chatlistactual">
+            
+               </div>
+            
+        </div>
+        
+
+    </div>
+   
+
+</body>
+<script>
+    function gotolink(){
+            const urlParams = new URLSearchParams(window.location.search);
+          const username = urlParams.get('username');
+          const userId = urlParams.get('userId');
+            window.location.href = `/home/thomas/Desktop/Morse Chat app/frontend/dashboard.html?username=${encodeURIComponent(username)}&userId=${userId}`;
+
+          }
+    document.addEventListener("DOMContentLoaded", function() {
+          const text = userId.textContent;
+          console.log(userId);
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+          const urlParams = new URLSearchParams(window.location.search);
+          const username = urlParams.get('username');
+          const userId = urlParams.get('userId');
+    
+          
+        });
+
+        
+          const urlParams = new URLSearchParams(window.location.search);
+          const username = urlParams.get('username');
+          const userId = urlParams.get('userId');
+          console.log(userId)
+    
+          
+    const jsonURL= `http://localhost:3000/app/inbox/${userId}`;
+    console.log(jsonURL);
+    fetch(jsonURL)
+    .then(response =>response.json())
+    .then(data =>{
+        if (data.length === 0) { // Check if inboxmessages.json is empty
+                const noMessagesDiv = document.createElement('div');
+                noMessagesDiv.classList.add('inbox');
+                noMessagesDiv.innerHTML='<p>NO MESSAGES</p>'
+                document.getElementById('chatlistactual').appendChild(noMessagesDiv);
+            }
+            else{
+data.forEach(item =>{
+    const listItem=document.createElement('div');
+    listItem.classList.add('box');
+    const convo=document.createElement('div');
+    convo.classList.add('inbox');
+
+    const senderElement=document.createElement('div');
+    senderElement.classList.add('sender');
+    senderElement.innerHTML='<h4>FROM: '+item.SenderuserID+'</h4>';
+
+    const messageElement=document.createElement('div');
+    messageElement.classList.add('sender-message');
+    messageElement.innerHTML='<p>'+item.message+'</p>';
+
+    listItem.appendChild(convo);
+    convo.appendChild(senderElement);
+    convo.appendChild(messageElement);
+
+    document.getElementById('chatlistactual').appendChild(listItem);
+
+    
+});}
+    })
+    .catch(error=>{
+        console.error('error fetching json:',error);
+    });
+   </script>
+
+</html>

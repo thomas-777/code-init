@@ -1,0 +1,137 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace
+}
+
+body {
+    
+    background-image: url('/home/thomas/Desktop/Morse Chat app/design.jpg');
+    
+    background-position: center;
+    background-size: cover;
+    
+    margin: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #412722;
+}
+
+.content {
+    display: flex;
+}
+
+.nav {
+    width: 60px;
+    height: 100vh;
+    background-color: #14080e;
+}
+.goback {
+    margin:0px;
+    background-color:#412722;
+    width: 45px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    border-radius: 10px;
+    
+}
+button{
+    width:100%;
+    background-color:#14080e;
+    border-radius: 10px;
+}
+img {
+    
+    height: 30px;
+    width: 30px;
+}
+.goback:hover{
+    background-color: #d5c2be;
+}
+
+.chats {
+    
+    
+
+    width: 1870px;
+    height: 100vh;
+    padding: 20px;
+    color: white;
+    overflow-y:scroll;
+}
+
+h5 {
+    
+    padding: 10px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+    color:#412722;
+    font-size: 27px;
+}
+
+.messages, .conversations{
+    width:300px;
+    display:flex;
+    flex-direction: column;
+    padding: 10px;
+
+}
+
+.message {
+    margin-bottom: 10px;
+}
+
+.sender {
+    font-weight: bold;
+}
+
+.text {
+    margin-left: 10px;
+}
+
+.message-input{
+    align-content: flex-end;
+}
+.inbox{
+    background-color: #3a240f;
+    height: 80px;
+    color:#fffcf8;
+    width:700px;
+    border-radius: 20px;
+    text-align: center;
+    margin:15px;
+}
+@keyframes example {
+    0%   {
+        background-color: #3a240f;
+        }
+    100% {
+        background-color:#130c05;
+        transform: scale(1.1);
+    }
+  }
+.inbox:hover{
+    animation: example 0.5s forwards;
+}
+.inbox:active{
+    background-color:#130c05;
+
+}
+.sender{
+    background-color:#e8ceb0;
+    color: black;
+    height: 25px;
+    font-size: 15px;
+    margin: auto;
+    font-weight: 100;
+}
+.sender-message{
+    height:55px;
+    box-sizing: border-box;
+    overflow-y:auto;
+}
+.box{
+    padding:0px 50% 0px 30%;
+}

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+<title>User Dashboard</title>
+</head>
+<body>
+  <div class="container">
+    <button type="button" onclick="gotolink()"><img src="/home/thomas/Desktop/Morse Chat app/icons8-mail-50.png" height="100px"></button>
+    <p class="use1">YOUR USER ID: <span id="userId"></span></p>
+    <form id="messageForm" onsubmit="sendMessage(event)">
+      <div class="form-group">
+            <input  type="text" id="receiverId" name="receiverId" placeholder="RECIEVER ID" required>
+            
+      </div>
+      
+      
+  </div>
+ 
+  <style>
+    .use1{
+      margin-left: -175%;
+      margin-top: -16%;
+    }
+    a{
+      margin-top: -100%;
+        margin-left: +230%; 
+        color: black;
+        text-decoration: none;
+    }
+    body {
+        background-image: url('/home/thomas/Desktop/Morse Chat app/design.jpg'); 
+        background-size: 100%;
+        background-color: #cfc082;
+        font-family: "Special Elite", system-ui;
+      margin: 0;
+      padding: 0;
+      
+    }
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      margin-left: 40%;
+      padding: 20px;
+      border-radius:30%;
+      font-weight: bolder;
+    }
+    .text{
+        border-radius: 50%;
+    }
+    .lab{
+        border-color: black;
+        overflow: auto;
+        text-align: center;
+        font-size: 50px;
+        color:black;
+        width:700px;
+        height:200px;
+        margin-left: 26%;
+    }
+    
+    .form-group {
+        border-radius: 50%;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+    p{
+
+        font-size: 30px;
+    }
+    input[type="text"] {
+      width: 300px;
+      padding: 25px;
+      font-size: 16px;
+    margin-left:0%;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-family: "Special Elite", system-ui;
+      box-sizing: border-box;
+    }
+    button[type="submit"] , button[type="reset"]{
+      width: 15%;
+      padding: 15px;
+      color: white;
+      font-size: 16px;
+      margin-left: 45%;
+      font-family: "Special Elite", system-ui;
+      background-color: #412722;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button[type="button"]{
+      background-color: transparent;
+      border-color: transparent;
+      margin-left: 230%;
+    }
+    button[type="button"]:hover{
+      border-radius: 50%;
+      background-color:white;
+    }
+    button[type="reset"]{
+        margin-left: 32%;
+        margin-right: -40%;
+        margin-top: 300px;
+      margin-bottom:-10%;
+    }
+    button[type="submit"]:hover {
+      background-color: #F6995C;
+    }
+    button[type="reset"]:hover {
+      background-color: #F6995C;
+    }
+    .app{
+        margin-left: 30%;
+    }
+  </style>
+ 
+  
+
+
+<div id="app">
+    
+    <div class="" ><label  id="label" class="lab"  onclick="addSymbol('-')"></label></div>
+    <br>
+    <label id="label1"></label>
+    <br>
+    
+</div>
+
+<script>
+  const audio = new Audio('/home/thomas/Desktop/Morse Chat app/incoming message in morse code sound effect  Sound notifications.mp3'); // Replace 'path_to_your_sound_file.mp3'
+const MORSE_CODE_DICT = { 'A':'.-', 'B':'-...',
+                    'C':'-.-.', 'D':'-..', 'E':'.',
+                    'F':'..-.', 'G':'--.', 'H':'....',
+                    'I':'..', 'J':'.---', 'K':'-.-',
+                    'L':'.-..', 'M':'--', 'N':'-.',
+                    'O':'---', 'P':'.--.', 'Q':'--.-',
+                    'R':'.-.', 'S':'...', 'T':'-',
+                    'U':'..-', 'V':'...-', 'W':'.--',
+                    'X':'-..-', 'Y':'-.--', 'Z':'--..',
+                    '1':'.----', '2':'..---', '3':'...--',
+                    '4':'....-', '5':'.....', '6':'-....',
+                    '7':'--...', '8':'---..', '9':'----.',
+                    '0':'-----', ', ':'--..--', '.':'.-.-.-',
+                    '?':'..--..', '/':'-..-.', '-':'-....-',
+                    '(':'-.--.', ')':'-.--.-'," ":''};
+
+let inputLabel = document.getElementById('label');
+let outputLabel = document.getElementById('label1');
+let lastSpacePressTime = null;
+let lastSpaceReleaseTime = null;
+function decrypt(message) {
+    message += ' ';
+    let decipher = '';
+    let citext = '';
+    for (let letter of message) {
+        if (letter !== ' ' && letter !== '/') {
+            citext += letter;
+        } else {
+            if (citext.length > 0) {
+                decipher += Object.keys(MORSE_CODE_DICT).find(key => MORSE_CODE_DICT[key] === citext);
+                citext = '';
+            }
+            if (letter === '/') {
+                decipher += ' ';
+            }
+        }
+    }
+    return decipher;
+}
+
+function addSymbol(symbol) {
+    let newText = inputLabel.textContent;
+    newText += symbol;
+    inputLabel.textContent = newText;
+}
+
+function printf(){
+        let msg=decrypt(inputLabel.textContent)
+        outputLabel.textContent=msg
+}
+
+function clearInput() {
+    inputLabel.textContent = '';
+    outputLabel.textContent = '';
+}
+
+function onSpacePress() {
+    lastSpacePressTime = Date.now();
+    if (lastSpaceReleaseTime) {
+        clearTimeout(lastSpaceReleaseTime);
+        lastSpaceReleaseTime = null;
+    }
+    audio.play();
+}
+
+function onSpaceRelease() {
+    if (lastSpacePressTime !== null) {
+        const spacePressDuration = Date.now() - lastSpacePressTime;
+        if (spacePressDuration >= 200) {
+            inputLabel.textContent += "-";
+        } else {
+            inputLabel.textContent += ".";
+        }
+        lastSpacePressTime = null;
+    }
+    lastSpaceReleaseTime = setTimeout(addSpace, 1000);
+    audio.pause();
+    audio.currentTime=0;
+}
+
+function addSpace() {
+    inputLabel.textContent += " ";
+    lastSpaceReleaseTime = setTimeout(addSlash, 2000);
+}
+
+function addSlash() {
+    inputLabel.textContent += "/ ";
+   
+}
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === ' ') {
+        onSpacePress();
+    }
+});
+
+document.addEventListener('keyup', (event) => {
+    if (event.key === ' ') {
+        onSpaceRelease();
+    }
+});
+</script>
+<div class="ba">
+    <button type="reset" onclick="clearInput()">Clear</button>
+    <button type="submit">Send Message</button>
+</div>
+    </form>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const text = userId.textContent;
+          console.log(userId);
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+          const urlParams = new URLSearchParams(window.location.search);
+          const username = urlParams.get('username');
+          const userId = urlParams.get('userId');
+    
+          document.getElementById('userId').textContent = userId;
+        });
+    
+           function gotolink(){
+            const urlParams = new URLSearchParams(window.location.search);
+          const username = urlParams.get('username');
+          const userId = urlParams.get('userId');
+            window.location.href = `/home/thomas/Desktop/Morse Chat app/frontend/inbox.html?username=${encodeURIComponent(username)}&userId=${userId}`;
+
+          }
+        async function sendMessage(event) {
+          event.preventDefault(); // Prevent form submission
+          let msg=decrypt(inputLabel.textContent)
+          const receiverId = document.getElementById('receiverId').value;
+          JSON.stringify(receiverId);
+          const messageToSend = document.getElementById('label').value;
+          JSON.stringify(msg);
+          // const userId = urlParams.get('userId');
+          const urlParams = new URLSearchParams(window.location.search);
+          const username = urlParams.get('username');
+          const userId = urlParams.get('userId');
+          const reqbody={
+              message: msg,
+              rID: receiverId
+            }
+          
+          // Redirect to the post page with query parameters
+          url = `http://localhost:3000/app/messages/send/${userId}`;
+          const response = await fetch(url, {
+            method: 'POST',
+            mode: "cors",
+            body:JSON.stringify(reqbody),
+            headers: {
+              "Content-Type": "application/json",
+              // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+          })
+
+
+          
+        }
+      </script>
+    </body>
+    </html>
