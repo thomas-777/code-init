@@ -10,7 +10,7 @@
 </head>
 <body>
   <div class="container">
-    <button type="button" onclick="gotolink()"><img src="/home/thomas/Desktop/Morse Chat app/icons8-mail-50.png" height="100px"></button>
+    <button type="button" onclick="gotolink()"><img src="icons8-mail-50.png" height="100px"></button>
     <p class="use1">YOUR USER ID: <span id="userId"></span></p>
     <form id="messageForm" onsubmit="sendMessage(event)">
       <div class="form-group">
@@ -33,7 +33,7 @@
         text-decoration: none;
     }
     body {
-        background-image: url('/home/thomas/Desktop/Morse Chat app/design.jpg'); 
+        background-image: url('design.jpg'); 
         background-size: 100%;
         background-color: #cfc082;
         font-family: "Special Elite", system-ui;
@@ -260,7 +260,7 @@ document.addEventListener('keyup', (event) => {
             const urlParams = new URLSearchParams(window.location.search);
           const username = urlParams.get('username');
           const userId = urlParams.get('userId');
-            window.location.href = `/home/thomas/Desktop/Morse Chat app/frontend/inbox.html?username=${encodeURIComponent(username)}&userId=${userId}`;
+            window.location.href = `inbox.html?username=${encodeURIComponent(username)}&userId=${userId}`;
 
           }
         async function sendMessage(event) {
