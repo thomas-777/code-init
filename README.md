@@ -6,10 +6,6 @@ Telegraph Simulator to emulate communication protocols and mechanismd of histroi
 
 ->The user can also access the reacent messages theyve received, decoded to plaintext by the web application.
 
-## Installation
-```
-npm install mongoose express dotenv
-```
 
 ## User Interface
 
