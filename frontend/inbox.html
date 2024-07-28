@@ -12,7 +12,7 @@
             <button type="button" onclick="gotolink()">
             <div class="goback" >
                 
-                <img src="/home/thomas/Desktop/Morse Chat app/Daco_4370644.png" alt="back">
+                <img src="Daco_4370644.png" alt="back">
             </div></button>
             
         </div>
@@ -36,7 +36,7 @@
             const urlParams = new URLSearchParams(window.location.search);
           const username = urlParams.get('username');
           const userId = urlParams.get('userId');
-            window.location.href = `/home/thomas/Desktop/Morse Chat app/frontend/dashboard.html?username=${encodeURIComponent(username)}&userId=${userId}`;
+            window.location.href = `dashboard.html?username=${encodeURIComponent(username)}&userId=${userId}`;
 
           }
     document.addEventListener("DOMContentLoaded", function() {
